@@ -1,4 +1,8 @@
 # Maintainer: Name <email>
+
+# shellcheck disable=SC2034,2154
+# shellcheck shell=bash
+
 pkgname=package_name
 pkgver=0
 pkgrel=1
