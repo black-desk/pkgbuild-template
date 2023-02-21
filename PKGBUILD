@@ -15,12 +15,12 @@ source=("$pkgname::git+https://github.com/...")
 sha512sums=('SKIP')
 options=(debug)
 pkgver() {
-        cd "$pkgname" || exit
+        cd "$pkgname" || exit 255
         git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v\(.*\)/\1/'
 }
 
 build() {
-        cd "$pkgname" || exit
+        cd "$pkgname" || exit 255
         cmake -B. \
                 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
                 -DCMAKE_INSTALL_PREFIX=/usr \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-        cd "$pkgname" || exit
+        cd "$pkgname" || exit 255
         DESTDIR="$pkgdir" cmake --install .
 }
